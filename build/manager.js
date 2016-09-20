@@ -48,7 +48,7 @@ var Manager = (function () {
 
         debug("connect to " + url.join(", "));
 
-        var db = monk.apply(null, url);
+        var db = monk.call(null, url, options);
 
         return new Q(function checkConnection(resolve, reject) {
           var connectionTimeout = setTimeout(function () {

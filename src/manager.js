@@ -37,7 +37,7 @@ class Manager {
 
     debug('connect to ' + url.join(', '));
 
-    let db = monk.apply(null, url);
+    let db = monk.call(null, url, options);
 
     return new Q(function checkConnection(resolve, reject) {
       var connectionTimeout = setTimeout(function() {
