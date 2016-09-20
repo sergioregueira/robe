@@ -23,7 +23,7 @@ test.afterEach = function*() {
 
 test['default options'] = function*() {
   Robe.DEFAULT_CONNECTION_OPTIONS.should.eql({
-    timeout: 3000
+    connectTimeoutMS: 3000
   });
 };
 

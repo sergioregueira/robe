@@ -48,13 +48,19 @@ var Manager = (function () {
           url = [url];
         }
 
+        if (options.timeout) {
+          if (!options.connectTimeoutMS) {
+            options.connectTimeoutMS = options.timeout;
+          }
+          delete options.timeout;
+        }
+
         _.defaults(options, Manager.DEFAULT_CONNECTION_OPTIONS);
 
         debug("connect to " + url.join(", "));
 
         return new Q(function checkConnection(resolve, reject) {
-          var monkOptions = { connectTimeoutMS: options.timeout };
-          var db = monk.call(null, url, monkOptions, function monkCallback(err, val) {
+          var db = monk.call(null, url, options, function monkCallback(err, val) {
             if (err) {
               return reject(err);
             }
@@ -98,7 +104,7 @@ var Manager = (function () {
  * @type {Object}
  */
 Manager.DEFAULT_CONNECTION_OPTIONS = {
-  timeout: 3000
+  connectTimeoutMS: 3000
 };
 
 Manager.extend = Class.extend;
