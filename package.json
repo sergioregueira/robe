@@ -49,7 +49,7 @@
     "lodash": "~3.10.1",
     "lodash-deep": "^1.5.3",
     "mongodb": "^1.4.35",
-    "mongoskin": "^1.4.13",
+    "mongoskin": "1.4.4",
     "monk": "^0.9.1",
     "simple-mongo-schema": "^0.8.1"
   }
